@@ -16,14 +16,6 @@ db["clis"] = []
 
 #
 
-try:
-    Gauth = os.getenv("test")
-    Guid = os.getenv("test_uid")
-    assert not None in [Gauth, Guid]
-    db["clis"].append({"uid": Guid, "auth": Gauth})
-except:
-    pass
-
 if os.getenv("waw") is not None:
     Dauth = os.getenv("waw")
 else:
