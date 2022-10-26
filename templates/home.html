@@ -1,5 +1,6 @@
 <html>
     <head>
+        <title>wawcodes - a gift code redeem automation</title>
         <style>
             footer {
                 font-size: 13px;
@@ -14,12 +15,20 @@
             span {
                 color: green;
             }
+            code {
+                font-family: Consolas,"courier new";
+                color: crimson;
+                background-color: #f1f1f1;
+                padding: 2px;
+                font-size: 75%;
+            }
         </style>
     </head>
     <body>
-        enter :
+        <h1>Welcome on wawcodes !</h1>
+        enter (you can just click on the code to copy it and be redirected) :
         <br/>
-        <b><code>{{payload}}</code></b>
+        <b><code id="payload" onclick="navigator.clipboard.writeText('{{payload}}');window.location = 'https://genshin.hoyoverse.com/'">{{payload}}</code></b>
         <br/>
         in the console of <a href="https://genshin.hoyoverse.com/">https://genshin.hoyoverse.com/</a> (type Ctrl + Shift + I and go in "console" to get it, on computer only) after being logged to get automatically the gifts codes.
         <br/>

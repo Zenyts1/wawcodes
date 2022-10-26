@@ -1,5 +1,5 @@
 # wawcodes
-An incredible project to automate gift codes redeem i a certain videogame.
+An incredible project to automate gift codes redeem in a certain videogame.
 
 ## Usage
 To launch the server, just ensure python > 3.8 is installed and follow the instructions below.
