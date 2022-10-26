@@ -1,0 +1,8 @@
+**/*.ignr
+logs.txt
+used.json
+.replit
+replit.nix
+.breakpoints
+__pycache__
+venv
