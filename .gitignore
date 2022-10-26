@@ -1,3 +1,4 @@
+**/*.ignr
 .gitignore
 .replit
 .breakpoints
