@@ -71,7 +71,7 @@ def find_codes(message: str) -> str:
 
 def redeem_codes() -> None:
     print("A...")
-    UA = fake_useragent.UserAgent().random
+    UA = fake_useragent.fake_useragent()
     Dheaders = {"User-Agent": UA, "Authorization": Dauth}
     Durl = "https://discord.com/api/v9/channels/740919586001518622"
     Gheaders = {}
@@ -97,7 +97,7 @@ def redeem_codes() -> None:
                 uids = {"success": [], "fail": [], "reasons": []}
                 n = 0
                 for cli in db["clis"]:
-                    Gheaders["User-Agent"] = fake_useragent.UserAgent().random
+                    Gheaders["User-Agent"] = fake_useragent.fake_useragent()
                     Gheaders["Cookie"] = cli["auth"]
                     try:
                         r = requests.get(

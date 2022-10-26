@@ -98,14 +98,6 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
-name = "fake-useragent"
-version = "0.1.11"
-description = "Up to date simple useragent faker with real world database"
-category = "main"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "flask"
 version = "2.2.2"
 description = "A simple framework for building complex web applications."
@@ -208,14 +200,6 @@ description = "multidict implementation"
 category = "main"
 optional = false
 python-versions = ">=3.7"
-
-[[package]]
-name = "numpy"
-version = "1.23.3"
-description = "NumPy is the fundamental package for array computing with Python."
-category = "main"
-optional = false
-python-versions = ">=3.8"
 
 [[package]]
 name = "packaging"
@@ -498,7 +482,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "944082fc8d869144faff7be38a2c5209dacd103983114bfb76500a65ab10a74a"
+content-hash = "5e764bbcb198d2451c1b3b255633d02cd2f87d9c062aea4fe3a9ede58f481da3"
 
 [metadata.files]
 aiohttp = []
@@ -510,7 +494,6 @@ charset-normalizer = []
 click = []
 colorama = []
 debugpy = []
-fake-useragent = []
 flask = []
 frozenlist = []
 idna = []
@@ -520,7 +503,6 @@ jedi = []
 jinja2 = []
 markupsafe = []
 multidict = []
-numpy = []
 packaging = []
 parso = []
 pluggy = []
