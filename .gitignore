@@ -6,3 +6,4 @@ used.json
 replit.nix
 __pycache__
 venv
+.data/db.sqlite
