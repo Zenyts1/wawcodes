@@ -1,4 +1,15 @@
 from event import Events
+try:
+    from db import Database
+    #from replit import db
+except:
+    print("Error importing database 0")
+    try:
+        from replit import db
+    except:
+        print("Error importing database 1")
+        db = []
+    Database = None
 import json
 import os
 import random
@@ -9,9 +20,8 @@ import fake_useragent
 import requests
 
 
-db = {}
-
-db["clis"] = []
+if Database is not None:
+    db = Database()
 
 
 #
@@ -46,8 +56,8 @@ else:
 
 
 def add_cli(cli: dict) -> bool:
-    if cli not in db["clis"]:
-        db["clis"].append(cli)
+    if cli not in db:
+        db.append(cli)
         return True
     return False
 
@@ -88,7 +98,7 @@ def redeem_codes() -> None:
                 print(x)
                 uids = {"success": [], "fail": [], "reasons": []}
                 n = 0
-                for cli in db["clis"]:
+                for cli in db:
                     Gheaders["User-Agent"] = fake_useragent.fake_useragent()
                     Gheaders["Cookie"] = cli["auth"]
                     try:

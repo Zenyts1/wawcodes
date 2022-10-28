@@ -8,7 +8,6 @@ import time
 import logs
 import sys
 
-
 app = Flask(__name__)
 
 
@@ -70,19 +69,24 @@ def codeend(code, uids):
     logs.log_end(code, uids)
 
 
-# a = threading.Thread(target=app.run, kwargs={"host": "0.0.0.0", "port": 8899})
-a = threading.Thread(
-    target=start, args=(app,), kwargs={"host": "0.0.0.0", "port": 8899}
-)
-a.start()
+def main():
+    while True:
+        try:
+            if len(codes.db) > 0:
+                codes.redeem_codes()
+        except KeyboardInterrupt:
+            raise sys.exit()
+        except Exception as e:
+            print("c", e)
+            logs.log_exception(e)
+        time.sleep(1200)
 
-while True:
-    try:
-        if len(codes.db["clis"]) > 0:
-            codes.redeem_codes()
-    except KeyboardInterrupt:
-        raise sys.exit()
-    except Exception as e:
-        print("c", e)
-        logs.log_exception(e)
-    time.sleep(1200)
+# a = threading.Thread(target=app.run, kwargs={"host": "0.0.0.0", "port": 8899})
+a = threading.Thread(target=start,
+                     args=(app, ),
+                     kwargs={
+                         "host": "0.0.0.0",
+                         "port": 8899
+                     })
+a.start()
+main()
