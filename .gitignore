@@ -1,11 +1,6 @@
 .gitignore
-.replit
-.breakpoints
 logs.txt
 used.json
-crypto.py
-daily.py
-replit.nix
 __pycache__
 venv
 data/db.sqlite
