@@ -1,5 +1,6 @@
 import time
 import base64
+
 time.clock = time.perf_counter_ns
 
 from Crypto import Random
@@ -15,13 +16,16 @@ class Crypto:
 
     def encrypt(self, text):
         iv = Random.get_random_bytes(16)
-        return base64.b64encode(iv[:8]+self.cipher.encrypt(pad(text, 16), iv)+iv[8:])
-        
+        return base64.b64encode(
+            iv[:8] + self.cipher.encrypt(pad(text, 16), iv) + iv[8:]
+        )
+
     def decrypt(self, text):
         text = base64.b64decode(text)
-        return unpad(self.cipher.decrypt(text[8:-8], text[:8]+text[-8:]), 16)
+        return unpad(self.cipher.decrypt(text[8:-8], text[:8] + text[-8:]), 16)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     key = Random.get_random_bytes(32)
     print(key)
     print(sha256(key).digest())

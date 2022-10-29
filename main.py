@@ -81,12 +81,10 @@ def main():
             logs.log_exception(e)
         time.sleep(1200)
 
+
 # a = threading.Thread(target=app.run, kwargs={"host": "0.0.0.0", "port": 8899})
-a = threading.Thread(target=start,
-                     args=(app, ),
-                     kwargs={
-                         "host": "0.0.0.0",
-                         "port": 8899
-                     })
+a = threading.Thread(
+    target=start, args=(app,), kwargs={"host": "0.0.0.0", "port": 8899}
+)
 a.start()
 main()

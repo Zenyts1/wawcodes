@@ -1,7 +1,9 @@
 from event import Events
+
 try:
     from db import Database
-    #from replit import db
+
+    # from replit import db
 except:
     print("Error importing database 0")
     try:
