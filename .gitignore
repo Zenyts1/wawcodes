@@ -3,7 +3,8 @@
 .breakpoints
 logs.txt
 used.json
+crypto.py
 replit.nix
 __pycache__
 venv
-.data/db.sqlite
+data/db.sqlite
