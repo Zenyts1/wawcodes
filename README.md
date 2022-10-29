@@ -7,9 +7,9 @@ To launch the server, just ensure python > 3.8 is installed and follow the instr
 ### Linux or Windows
 Type in the command line :
 
-`git clone "https://github.com/Zenyts1/wawcodes.git" && cd wawcodes && python main.py -m pip install -r requirements.txt`
+`git clone "https://github.com/Zenyts1/wawcodes.git" && cd wawcodes && python -m pip install -r requirements.txt && main.py`
 
-(or `git clone "https://github.com/Zenyts1/wawcodes.git" && cd wawcodes && python main.py -m poetry install` if you want to use poetry instead pip)
+(or `git clone "https://github.com/Zenyts1/wawcodes.git" && cd wawcodes && python -m poetry install && main.py` if you want to use poetry instead pip)
 
 ## Sources
 Replit of the project ( it's the best editor ever :) -->  [`https://replit.com/@LouissPiouPiou/wawcodes`](https://replit.com/@LouissPiouPiou/wawcodes)
