@@ -18,3 +18,9 @@ def log_end(code, uids):
 def log_exception(e):
     with open("logs.txt", "a") as f:
         f.write(f"An error occured : {e}\n\n")
+
+
+def log_daily(response):
+    with open("logs.txt", "a") as f:
+        f.write(
+            f"{response.status_code} {response.status_text} {response.headers.get('Content-Type', '')} : {response.content}\n\n")

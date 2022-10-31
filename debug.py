@@ -53,4 +53,4 @@ def debug(log=True, dyna=False):
             return self.last_out
 
     debug_s.log, debug_s.dyna = log, dyna
-    return debug_s
+    return debug_s if DEBUG else lambda x: x

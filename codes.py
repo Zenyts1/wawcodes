@@ -85,12 +85,12 @@ def redeem_codes() -> None:
     try:
         messages = messages.json()
     except json.JSONDecodeError:
-        print(messages.content)
+        # print(messages.content)
         return
     except TypeError:
         if type(messages) == bytes:
             if not b"Access denied" in messages.content:
-                print(messages.content)
+                print(messages.status_code)
             else:
                 time.sleep(600)
         return

